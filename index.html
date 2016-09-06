@@ -38,26 +38,30 @@
 jQuery(function($) {
 	console.log('loaded');
 	
-	var D = $('#diameter').on('change', update),
-		G = $('#reduction').on('change', update),
-		R = $('#rpm').on('change', update),
-		Q = 12 * 5280;
+	var D = $('#diameter');
+	var G = $('#reduction');
+	var R = $('#rpm');
+	var Q = 12 * 5280;
 	
-	console.log('D', D, 'G', G, 'R', R);
+	//console.log('D', D, 'G', G, 'R', R);
 	
 	var update = function(e) {
-		var d = D.val(),
-			g = G.val(),
-			r = R.val();
+		var d = D.val();
+		var g = G.val();
+		var r = R.val();
 		
-		console.log('d', d, 'g', g, 'r', r);
+		//console.log('d', d, 'g', g, 'r', r);
 		
-		if (d == 0 || g == 0 || r == 0) {
+		if (!d || !g || !r) {
 			return false;
 		}
 		
 		var circ = d * Math.PI;
 	};
+	
+	$(D).on('keyup', update);
+	$(G).on('keyup', update);
+	$(R).on('keyup', update);
 });
 		</script>
 	</body>
