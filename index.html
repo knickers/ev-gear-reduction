@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gear Reduction</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+	</head>
+	<body class="container">
+		<h1>Hello World</h1>
+		
+		<div class="row">
+			<div class="col-sm-6">
+				<input type="number" class="form-control" id="diameter" placeholder="Wheel Diameter (inches)"/>
+			</div>
+			<div class="col-sm-12 visible-sm">&nbsp;</div>
+			<div class="col-sm-6">
+				<input type="number" class="form-control" id="reduction" placeholder="Gear Reduction (1 / X)"/>
+			</div>
+			<div class="col-sm-12">&nbsp;</div>
+			<div class="col-sm-6">
+				<input type="number" class="form-control" id="rpm" placeholder="Max RPM"/>
+			</div>
+			<div class="col-sm-12 visible-sm">&nbsp;</div>
+			<div class="col-sm-6">
+				<input type="number" class="form-control" id="mph" placeholder="Max MPH"/>
+			</div>
+		</div>
+		
+		<br><br>
+		
+		<div id="answer"></div>
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.js"></script>
+		<!--
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		-->
+		
+		<script type="text/javascript">
+jQuery(function($) {
+	console.log('loaded');
+	
+	var D = $('#diameter').on('change', update),
+		G = $('#reduction').on('change', update),
+		R = $('#rpm').on('change', update),
+		Q = 12 * 5280;
+	
+	console.log('D', D, 'G', G, 'R', R);
+	
+	var update = function(e) {
+		var d = D.val(),
+			g = G.val(),
+			r = R.val();
+		
+		console.log('d', d, 'g', g, 'r', r);
+		
+		if (d == 0 || g == 0 || r == 0) {
+			return false;
+		}
+		
+		var circ = d * Math.PI;
+	};
+});
+		</script>
+	</body>
+</html>
