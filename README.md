@@ -1,5 +1,5 @@
 # EV Gearing
-Calculator for electric vehicle gear reductions
+Calculator for electric vehicle gear reductions, [demo](http://robot54.com/gearing.html).
 
 ## Calculate the Gear Reduction ratio
 For a given wheel diameter, motor RPM, and desired speed.
