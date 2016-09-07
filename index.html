@@ -13,7 +13,7 @@
 			</div>
 			<div class="col-sm-12">&nbsp;</div>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="reduction" placeholder="Gear Reduction (1 / X)"/>
+				<input type="number" class="form-control" id="reduction" placeholder="Gear Reduction (X : 1)"/>
 				<div class="radio text-center">
 					<label>
 						<input type="radio" name="type" value="reduction"/>
@@ -23,7 +23,7 @@
 			</div>
 			<div class="col-sm-12 visible-sm">&nbsp;</div>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="revolutions" placeholder="Revolutions RPM"/>
+				<input type="number" class="form-control" id="revolutions" placeholder="Revolutions (RPM)"/>
 				<div class="radio text-center">
 					<label>
 						<input type="radio" name="type" value="revolutions"/>
@@ -45,10 +45,10 @@
 		
 		<br><br>
 		
-		<h2 class="text-center">
+		<h1 class="text-center">
 			<span id="answer"></span>
 			<span id="unit"></span>
-		</h2>
+		</h1>
 		
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.js"></script>
 		<!--
@@ -84,13 +84,13 @@ jQuery(function($) {
 			case 'reduction':
 				if (!s || !r) { return false; }
 				
-				A.text((Math.PI * d * r * Q / s).toFixed(1));
+				A.text((Math.PI * d * r * Q / s).toFixed(2));
 				U.text(': 1');
 				break;
 			case 'revolutions':
 				if (!g || !s) { return false; }
 				
-				A.text((Math.PI * d * r * Q / g).toFixed(1));
+				A.text((g * s / Q / d / Math.PI).toFixed(0));
 				U.text('RPM');
 				break;
 			case 'speed':
