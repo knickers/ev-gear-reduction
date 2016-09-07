@@ -70,6 +70,7 @@ jQuery(function($) {
 	var S = $('#speed');
 	var A = $('#answer');
 	var U = $('#unit');
+	var T = $('input[name="type"]');
 	var Q = 60 / 12 / 5280;
 	
 	//console.log('D', D, 'G', G, 'R', R);
@@ -79,7 +80,7 @@ jQuery(function($) {
 		var g = G.val(); // gear reduction
 		var r = R.val(); // revolutions
 		var s = S.val(); // speed
-		var t = $('[name="type"]:checked').val(); // type
+		var t = T.filter(':checked').val(); // type
 		
 		//console.log('d', d, 'g', g, 'r', r);
 		
@@ -112,7 +113,7 @@ jQuery(function($) {
 	$(G).on('keyup', update);
 	$(R).on('keyup', update);
 	$(S).on('keyup', update);
-	$(U).on('keyup', update);
+	$(T).on('change', update);
 });
 		</script>
 	</body>
