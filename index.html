@@ -4,6 +4,27 @@
 		<title>EV Gearing</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+		<style>
+			@media (max-width: 769px) {
+				h1.text-center {
+					margin: 20px 0 15px;
+					font-size: 25px;
+					text-align: left;
+				}
+				.radio.text-center {
+					margin: 5px 0 0;
+					text-align: left;
+				}
+				.radio label {
+					display: block;
+				}
+				.radio input[type="radio"] {
+					width: 23px;
+					height: 23px;
+					margin: 0 0 0 -25px;
+				}
+			}
+		</style>
 	</head>
 	<body class="container">
 		<h1 class="text-center">Gearing Calculations</h1>
@@ -18,37 +39,64 @@
 			</div>
 			<div class="col-sm-12">&nbsp;</div>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="reduction" placeholder="Gear Reduction (X : 1)"/>
-				<div class="radio text-center">
-					<label>
-						<input type="radio" name="type" value="reduction" checked/>
-						Calculate Gear Reduction
-					</label>
+				<div class="row">
+					<div class="col-xs-9 col-sm-12">
+						<input type="number" class="form-control" id="reduction" placeholder="Gear Reduction (X : 1)"/>
+					</div>
+					<div class="col-xs-3 col-sm-12">
+						<div class="radio text-center">
+							<label>
+								<input type="radio" name="type" value="reduction" checked/>
+								<span class="hidden-xs">
+									Calculate Gear Reduction
+								</span>
+								<span class="visible-xs pull-right">(X:1)</span>
+							</label>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-sm-12 visible-sm">&nbsp;</div>
+			<div class="col-sm-12 visible-xs">&nbsp;</div>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="revolutions" placeholder="Motor Revolutions (RPM)"/>
-				<div class="radio text-center">
-					<label>
-						<input type="radio" name="type" value="revolutions"/>
-						Calculate RPM
-					</label>
+				<div class="row">
+					<div class="col-xs-9 col-sm-12">
+						<input type="number" class="form-control" id="revolutions" placeholder="Motor Revolutions (RPM)"/>
+					</div>
+					<div class="col-xs-3 col-sm-12">
+						<div class="radio text-center">
+							<label>
+								<input type="radio" name="type" value="revolutions"/>
+								<span class="hidden-xs">
+									Calculate RPM
+								</span>
+								<span class="visible-xs pull-right">RPM</span>
+							</label>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-sm-12 visible-sm">&nbsp;</div>
+			<div class="col-sm-12 visible-xs">&nbsp;</div>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="speed" placeholder="Vehicle Speed (MPH)"/>
-				<div class="radio text-center">
-					<label>
-						<input type="radio" name="type" value="speed"/>
-						Calculate Speed
-					</label>
+				<div class="row">
+					<div class="col-xs-9 col-sm-12">
+						<input type="number" class="form-control" id="speed" placeholder="Vehicle Speed (MPH)"/>
+					</div>
+					<div class="col-xs-3 col-sm-12">
+						<div class="radio text-center">
+							<label>
+								<input type="radio" name="type" value="speed"/>
+								<span class="hidden-xs">
+									Calculate Speed
+								</span>
+								<span class="visible-xs pull-right">MPH</span>
+							</label>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		
-		<br><br>
+		<br class="hidden-xs"><br class="hidden-xs">
 		
 		<h1 class="text-center">
 			<span id="answer"></span>
