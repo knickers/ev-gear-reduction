@@ -41,16 +41,16 @@
 			<div class="col-sm-4">
 				<div class="row">
 					<div class="col-xs-9 col-sm-12">
-						<input type="number" class="form-control" id="reduction" placeholder="Gear Reduction (X : 1)"/>
+						<input type="number" class="form-control" id="gearing" placeholder="Gear Reduction (X : 1)"/>
 					</div>
 					<div class="col-xs-3 col-sm-12">
 						<div class="radio text-center">
 							<label>
-								<input type="radio" name="type" value="reduction" checked/>
+								<input type="radio" name="type" value="gearing" checked/>
 								<span class="hidden-xs">
 									Calculate Gear Reduction
 								</span>
-								<span class="visible-xs pull-right">(X:1)</span>
+								<span class="visible-xs pull-right">X : 1</span>
 							</label>
 						</div>
 					</div>
@@ -104,24 +104,21 @@
 		</h1>
 		
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.js"></script>
-		<!--
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		-->
-		
 		<script type="text/javascript">
 jQuery(function($) {
-	//console.log('loaded');
-	
 	var D = $('#diameter');
-	var G = $('#reduction');
+	var G = $('#gearing');
 	var R = $('#revolutions');
 	var S = $('#speed');
 	var A = $('#answer');
 	var U = $('#unit');
 	var T = $('input[name="type"]');
 	var Q = 60 / 12 / 5280;
-	
-	//console.log('D', D, 'G', G, 'R', R);
+	/*
+		Rev   60 min   D*pi in    1 ft    1 mile
+		--- * ------ * ------- * ----- * -------
+		min    1 hr     1 rev    12 in   5280 ft
+	*/
 	
 	var update = function(e) {
 		var d = D.val(); // diameter
@@ -130,28 +127,29 @@ jQuery(function($) {
 		var s = S.val(); // speed
 		var t = T.filter(':checked').val(); // type
 		
-		//console.log('d', d, 'g', g, 'r', r);
-		
 		if (!d) { return false; }
 		
 		switch (t) {
-			case 'reduction':
+			case 'gearing':
 				if (!s || !r) { return false; }
 				
-				A.text((Math.PI * d * r * Q / s).toFixed(2));
-				U.text(': 1');
+				G.val((Math.PI * d * r * Q / s).toFixed(2));
+				//A.text((Math.PI * d * r * Q / s).toFixed(2));
+				//U.text(': 1');
 				break;
 			case 'revolutions':
 				if (!g || !s) { return false; }
 				
-				A.text((g * s / Q / d / Math.PI).toFixed(0));
-				U.text('RPM');
+				R.val((g * s / Q / d / Math.PI).toFixed(0));
+				//A.text((g * s / Q / d / Math.PI).toFixed(0));
+				//U.text('RPM');
 				break;
 			case 'speed':
 				if (!g || !r) { return false; }
 				
-				A.text((Math.PI * d * r * Q / g).toFixed(1));
-				U.text('MPH');
+				S.val((Math.PI * d * r * Q / g).toFixed(1));
+				//A.text((Math.PI * d * r * Q / g).toFixed(1));
+				//U.text('MPH');
 				break;
 			default:
 		}
