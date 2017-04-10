@@ -33,12 +33,29 @@
 			<img src="GitHub-64.jpg" style="width:40px;" title="View on GitHub">
 		</a>
 		
+		<br>
+		
 		<div class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-				<input type="number" class="form-control" id="diameter" placeholder="Wheel Diameter (inches)"/>
+			<div class="col-sm-3">
+				<div class="row">
+					<div class="col-xs-9 col-sm-12">
+						<input type="number" class="form-control" id="diameter" placeholder="Wheel Diameter (inches)"/>
+					</div>
+					<div class="col-xs-3 col-sm-12">
+						<div class="radio text-center">
+							<label>
+								<input type="radio" name="type" value="diameter" checked/>
+								<span class="hidden-xs">
+									Calculate Wheel Diameter
+								</span>
+								<span class="visible-xs pull-right">Inch</span>
+							</label>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col-sm-12">&nbsp;</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<div class="row">
 					<div class="col-xs-9 col-sm-12">
 						<input type="number" class="form-control" id="gearing" placeholder="Gear Reduction (X : 1)"/>
@@ -57,7 +74,7 @@
 				</div>
 			</div>
 			<div class="col-sm-12 visible-xs">&nbsp;</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<div class="row">
 					<div class="col-xs-9 col-sm-12">
 						<input type="number" class="form-control" id="revolutions" placeholder="Motor Revolutions (RPM)"/>
@@ -76,7 +93,7 @@
 				</div>
 			</div>
 			<div class="col-sm-12 visible-xs">&nbsp;</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<div class="row">
 					<div class="col-xs-9 col-sm-12">
 						<input type="number" class="form-control" id="speed" placeholder="Vehicle Speed (MPH)"/>
@@ -127,29 +144,22 @@ jQuery(function($) {
 		var s = S.val(); // speed
 		var t = T.filter(':checked').val(); // type
 		
-		if (!d) { return false; }
-		
 		switch (t) {
+			case 'diameter':
+				if (!g || !r || !s) { return false; }
+				G.val((g * s / Q / r / Math.PI).toFixed(0));
+				break;
 			case 'gearing':
-				if (!s || !r) { return false; }
-				
+				if (!d || !s || !r) { return false; }
 				G.val((Math.PI * d * r * Q / s).toFixed(2));
-				//A.text((Math.PI * d * r * Q / s).toFixed(2));
-				//U.text(': 1');
 				break;
 			case 'revolutions':
-				if (!g || !s) { return false; }
-				
+				if (!d || !g || !s) { return false; }
 				R.val((g * s / Q / d / Math.PI).toFixed(0));
-				//A.text((g * s / Q / d / Math.PI).toFixed(0));
-				//U.text('RPM');
 				break;
 			case 'speed':
-				if (!g || !r) { return false; }
-				
+				if (!d || !g || !r) { return false; }
 				S.val((Math.PI * d * r * Q / g).toFixed(1));
-				//A.text((Math.PI * d * r * Q / g).toFixed(1));
-				//U.text('MPH');
 				break;
 			default:
 		}
