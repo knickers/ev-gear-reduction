@@ -113,24 +113,15 @@
 			</div>
 		</div>
 		
-		<br class="hidden-xs"><br class="hidden-xs">
-		
-		<h1 class="text-center">
-			<span id="answer"></span>
-			<span id="unit"></span>
-		</h1>
-		
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.js"></script>
 		<script type="text/javascript">
 jQuery(function($) {
-	var D = $('#diameter');
-	var G = $('#gearing');
-	var R = $('#revolutions');
-	var S = $('#speed');
-	var A = $('#answer');
-	var U = $('#unit');
-	var T = $('input[name="type"]');
-	var Q = 60 / 12 / 5280;
+	var D = $('#diameter'),
+		G = $('#gearing'),
+		R = $('#revolutions'),
+		S = $('#speed'),
+		T = $('input[name="type"]'),
+		Q = 60 / 12 / 5280;
 	/*
 		Rev   D*pi in | 60 min    1 ft    1 mile |
 		--- * ------- * ------ * ----- * ------- |
@@ -139,11 +130,11 @@ jQuery(function($) {
 		              +------------ Q -----------+
 	*/
 	var update = function(e) {
-		var d = D.val(); // diameter
-		var g = G.val(); // gear reduction
-		var r = R.val(); // revolutions
-		var s = S.val(); // speed
-		var t = T.filter(':checked').val(); // type
+		var d = D.val(), // diameter
+			g = G.val(), // gear reduction
+			r = R.val(), // revolutions
+			s = S.val(), // speed
+			t = T.filter(':checked').val(); // type
 		
 		switch (t) {
 			case 'diameter':
@@ -166,10 +157,7 @@ jQuery(function($) {
 		}
 	};
 	
-	$(D).on('keyup', update);
-	$(G).on('keyup', update);
-	$(R).on('keyup', update);
-	$(S).on('keyup', update);
+	$('input[type="number"]').on('keyup', update);
 	$(T).on('change', update);
 });
 
