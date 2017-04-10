@@ -132,11 +132,12 @@ jQuery(function($) {
 	var T = $('input[name="type"]');
 	var Q = 60 / 12 / 5280;
 	/*
-		Rev   60 min   D*pi in    1 ft    1 mile
-		--- * ------ * ------- * ----- * -------
-		min    1 hr     1 rev    12 in   5280 ft
+		Rev   D*pi in | 60 min    1 ft    1 mile |
+		--- * ------- * ------ * ----- * ------- |
+		min    1 rev  |  1 hr    12 in   5280 ft |
+		              |                          |
+		              +------------ Q -----------+
 	*/
-	
 	var update = function(e) {
 		var d = D.val(); // diameter
 		var g = G.val(); // gear reduction
