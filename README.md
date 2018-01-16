@@ -2,7 +2,7 @@
 
 Calculate vehicle drivetrain properties, such as gear reduction and top speed, based on variables like wheel diameter and motor RPM.
 
-[Demo](http://robot54.com/gearing/).
+[Demo](http://robot54.com/gearing/)
 
 ## Calculate the Wheel Diameter
 This unit is given in inches, and is the outer diameter of the tire.
