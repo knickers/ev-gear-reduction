@@ -44,7 +44,7 @@
 					<div class="col-xs-3 col-sm-12">
 						<div class="radio text-center">
 							<label>
-								<input type="radio" name="type" value="diameter" checked/>
+								<input type="radio" name="type" value="diameter"/>
 								<span class="hidden-xs">
 									Calculate Wheel Diameter
 								</span>
@@ -63,7 +63,7 @@
 					<div class="col-xs-3 col-sm-12">
 						<div class="radio text-center">
 							<label>
-								<input type="radio" name="type" value="gearing" checked/>
+								<input type="radio" name="type" value="gearing"/>
 								<span class="hidden-xs">
 									Calculate Gear Reduction
 								</span>
@@ -101,7 +101,7 @@
 					<div class="col-xs-3 col-sm-12">
 						<div class="radio text-center">
 							<label>
-								<input type="radio" name="type" value="speed"/>
+								<input type="radio" name="type" value="speed" checked="checked"/>
 								<span class="hidden-xs">
 									Calculate Speed
 								</span>
@@ -112,6 +112,29 @@
 				</div>
 			</div>
 		</div>
+		
+		<br>
+		<p>Calculate vehicle properties, such as gear reduction and top speed, based on variables like wheel diameter and motor RPM.</p>
+		<p>Select the radio button for the value you wish to calculate, then fill in the other values. Calculation happens on the fly as you type.</p>
+		
+		<h3>Wheel Diameter</h3>
+		<p>This unit is given in inches, and is the outer diameter of the tire.</p>
+		<p>If you wish to find a wheel diameter to match a vehicle gear reduction, motor RPM and desired top speed.</p>
+		
+		<h3>Gear Reduction</h3>
+		<p>This unit is given as <em>reduction</em> / 1. For example <em>9.3 / 1</em> and <em>12 / 1</em> have <em>9.3</em> and <em>12</em> for the values entered here.</p>
+		<p>This will calculate the needed gear reduction for a vehicle with known tire size, given motor RPM and vehicle speed.</p>
+		<p>Electric motors often have a specified max RPM and continuous RPM, try out both values, and match those with the desired top speed and cruising speed, to find a good gear reduction balance.</p>
+		
+		<h3>Motor RPM</h3>
+		<p>This unit is Revolutions Per Minute (RPM)</p>
+		<p>This will calculate the motor's rotational speed for the given vehicle's wheel diameter, gear reduction and desired speed.</p>
+		<p>Electric motors often have a specified max RPM and continuous RPM, try out different speed and gearing values to fit in the motor's power curve.</p>
+		
+		<h3>Speed</h3>
+		<p>This unit is in Miles Per Hour (MPH)</p>
+		<p>This will calculate the vehicle's speed for the selected wheel diameter, gear reduction and motor RPM.</p>
+		<p>Electric motors often have a specified max RPM and continuous RPM, try out both values to see top speed and cruising speed respectively.</p>
 		
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.js"></script>
 		<script type="text/javascript">
