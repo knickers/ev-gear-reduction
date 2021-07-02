@@ -38,7 +38,7 @@
 
 		<br>
 
-		<div class="row">
+		<div id="inputs" class="row">
 			<div class="col-sm-3">
 				<div class="row">
 					<div class="col-xs-9 col-sm-12">
@@ -173,53 +173,51 @@
 		<p>This will calculate the vehicle's speed for the selected wheel diameter, gear reduction and motor RPM.</p>
 		<p>Electric motors often have a specified max RPM and continuous RPM, try out both values to see top speed and cruising speed respectively.</p>
 
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.js"></script>
 		<script type="text/javascript">
-jQuery(function($) {
-	var D = $('#diameter'),
-		G = $('#gearing'),
-		R = $('#revolutions'),
-		S = $('#speed'),
-		T = $('input[name="type"]'),
-		Q = 60 / 12 / 5280;
-	/*
-		Rev   D*pi in | 60 min    1 ft    1 mile |
-		--- * ------- * ------ * ----- * ------- |
-		min    1 rev  |  1 hr    12 in   5280 ft |
-		              |                          |
-		              +------------ Q -----------+
-	*/
-	var update = function(e) {
-		var d = D.val(), // diameter
-			g = G.val(), // gear reduction
-			r = R.val(), // revolutions
-			s = S.val(), // speed
-			t = T.filter(':checked').val(); // type
+var I = document.getElementById('inputs'),
+	D = document.getElementById('diameter'),
+	G = document.getElementById('gearing'),
+	R = document.getElementById('revolutions'),
+	S = document.getElementById('speed'),
+	Q = 60 / 12 / 5280;
+/*
+	Rev   D*pi in | 60 min    1 ft    1 mile |
+	--- * ------- * ------ * ----- * ------- |
+	min    1 rev  |  1 hr    12 in   5280 ft |
+	              |                          |
+	              +------------ Q -----------+
+*/
+function update(e) {
+	var d = D.value, // diameter
+		g = G.value, // gear reduction
+		r = R.value, // revolutions
+		s = S.value, // speed
+		t = I.querySelector('input[name="type"]:checked').value; // type
 
-		switch (t) {
-			case 'diameter':
-				if (!g || !r || !s) { return false; }
-				D.val((g * s / Q / r / Math.PI).toFixed(0));
-				break;
-			case 'gearing':
-				if (!d || !s || !r) { return false; }
-				G.val((Math.PI * d * r * Q / s).toFixed(2));
-				break;
-			case 'revolutions':
-				if (!d || !g || !s) { return false; }
-				R.val((g * s / Q / d / Math.PI).toFixed(0));
-				break;
-			case 'speed':
-				if (!d || !g || !r) { return false; }
-				S.val((Math.PI * d * r * Q / g).toFixed(1));
-				break;
-			default:
-		}
-	};
+	switch (t) {
+		case 'diameter':
+			if (!g || !r || !s) { return false; }
+			D.value = (g * s / Q / r / Math.PI).toFixed(0);
+			break;
+		case 'gearing':
+			if (!d || !s || !r) { return false; }
+			G.value = (Math.PI * d * r * Q / s).toFixed(2);
+			break;
+		case 'revolutions':
+			if (!d || !g || !s) { return false; }
+			R.value = (g * s / Q / d / Math.PI).toFixed(0);
+			break;
+		case 'speed':
+			if (!d || !g || !r) { return false; }
+			S.value = (Math.PI * d * r * Q / g).toFixed(1);
+			break;
+		default:
+	}
+};
 
-	$('input[type="number"]').on('keyup', update);
-	$(T).on('change', update);
-});
+I.addEventListener('change', update);
+I.addEventListener('keyup', update);
+
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
